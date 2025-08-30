@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Student Report</h2>
+
+<form method="GET" class="search">
+  <input type="text" name="q" value="{{ search }}" placeholder="Search name, email, phone, course">
+  <button type="submit">Search</button>
+  <a class="clear" href="{{ url_for('report') }}">Clear</a>
+</form>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Course</th>
+        <th>Registered At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if rows %}
+        {% for r in rows %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ r.full_name }}</td>
+            <td>{{ r.email }}</td>
+            <td>{{ r.phone }}</td>
+            <td>{{ r.course }}</td>
+            <td>{{ r.registered_at }}</td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <tr><td colspan="6" class="empty">No records found.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

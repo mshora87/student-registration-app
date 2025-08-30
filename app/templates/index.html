@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Student Registration</h2>
+
+<form action="{{ url_for('submit') }}" method="POST" class="card">
+  <div class="field">
+    <label for="full_name">Full Name</label>
+    <input type="text" id="full_name" name="full_name" placeholder="e.g., Mostafa Elshora" required>
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="name@example.com" required>
+  </div>
+
+  <div class="field">
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" name="phone" placeholder="+9665xxxxxxx" required>
+  </div>
+
+  <div class="field">
+    <label for="course">Course</label>
+    <select id="course" name="course" required>
+      <option value="" disabled selected>Choose a course</option>
+      <option>Azure Fundamentals</option>
+      <option>Docker Basics</option>
+      <option>Linux Administration</option>
+      <option>Python 101</option>
+      <option>Kubernetes Essentials</option>
+    </select>
+  </div>
+
+  <button type="submit">Register</button>
+</form>
+{% endblock %}
