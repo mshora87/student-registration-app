@@ -4,6 +4,7 @@ services:
   db:
     image: mysql:8.0
     container_name: sr_mysql
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: training_center
       MYSQL_USER: appuser
@@ -23,6 +24,7 @@ services:
   app:
     build: ./app
     container_name: sr_app
+    restart: unless-stopped
     depends_on:
       db:
         condition: service_healthy
